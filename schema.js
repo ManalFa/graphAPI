@@ -1,7 +1,6 @@
 const {buildSchema}=require('graphql');
 
 const schema= buildSchema(`
-
 type User {
   id: ID
   firstName: String
@@ -14,9 +13,25 @@ type User {
   job: String
   companyName: String
 }
+type Job {
+  id: ID
+  name: String
+  
+}
+type Speciality {
+  id: ID
+  idJob: String
+  nameSpec: String
+}
+input JobInput{
+  job: String}
+
 
 type Query {
-  getUsers: [User]
+  getUsers: [User],
+  getJobs(job:JobInput):Job,
+  getSpecialities:[Speciality],
+ 
 }
 
 input UserInput{
